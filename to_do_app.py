@@ -1,8 +1,5 @@
 import sys
-#import database
-# content = open("database.txt", 'r')
-# read_content = content.readlines()
-# print(read_content)
+import os
 
 class Controller():
 
@@ -24,6 +21,7 @@ class Controller():
             if self.list_argv[0] == "-l":
                 view.print_list()
 
+
             #elif self.list_argv[0] == "a"
             #
             # if self.list_argv[0] == "-l":
@@ -32,10 +30,6 @@ class Controller():
 
 class Model():
     pass
-    # def database_open(self):
-    #     self.content = open(database.txt, 'a+')
-    #     self.read_content = self.content.read()
-    #     print(self.read_content)
 
 
 class View():
@@ -55,14 +49,16 @@ class View():
     def print_list(self):
             self.content = open("database.txt", "r")
             self.read_content = self.content.readlines()
-            # self.todolist = []
-            # self.todolist.append(self.read_content)
-            #self.read_content.split('\n')
-            for i in range(0, len(self.read_content)):
-                result = ""
-                result += str(i+1) + ". " + self.read_content[i].__str__()
-                #return result
-                print(result)
+            if os.stat("database.txt").st_size == 0:
+                print("No todos today!")
+            else:
+                for i in range(0, len(self.read_content)):
+                    result = ""
+                    self.read_content[i].strip("True")
+                    result += str(i+1) + " - " + self.read_content[i].__str__()
+                    #return result
+                    print(result)
+
 
 
 
@@ -70,9 +66,4 @@ view = View()
 model = Model()
 controller = Controller()
 
-controller.arg_reader()
-#view.print_list()
-#controller.controller("l")
-#model.database_open()
-
-#view.print_usage()
+#controller.arg_reader()
