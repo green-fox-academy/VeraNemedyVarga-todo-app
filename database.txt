@@ -1,4 +1,4 @@
-0 \t Complete Workshop
-0 \t Have lunch
-1 \t Get coffee
-0 \t Prepare for exam
+Complete Workshop
+Have lunch
+Get coffee
+Prepare for exam
