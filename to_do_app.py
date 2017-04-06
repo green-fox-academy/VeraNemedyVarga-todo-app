@@ -6,18 +6,19 @@ class Controller():
     def __init__(self):
         pass
 
-    # def arg_reader():
-    # 	if len(sys.argv) == 1:
-    # 		return []
-    # 	else:
-    # 		return sys.argv[1:]
-    # # arguments = arg_reader()
-    #
-    # if len(arguments) == 0:
-    # 	print('help text')
-    # else:
-    # 	if( arguments[0] == '-l' ):
-    # 		print('Addolunk ilyet', arguments[1])
+    def arg_reader(self):
+        self.list_argv = []
+        if len(sys.argv) <= 1:
+            self.list_argv = []
+        else:
+            self.list_argv = sys.argv[1:]
+
+        if len(self.list_argv) == 0:
+            view.print_usage()
+        else:
+            pass
+    	# if( arguments[0] == '-l' ):
+    	# 	print('Addolunk ilyet', arguments[1])
 
 class Model():
     pass
@@ -37,5 +38,8 @@ class View():
              "-r   Removes an task\n"
              "-c   Completes an task")
 
-welcome = View()
-welcome.print_usage()
+controller = Controller()
+view = View()
+
+controller.arg_reader()
+#view.print_usage()
