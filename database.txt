@@ -1,4 +1,4 @@
-Complete Workshop False
-Have lunch True
-Get coffee True
-Prepare for exam False
+Complete Workshop
+Have lunch
+Get coffee
+Prepare for exam
