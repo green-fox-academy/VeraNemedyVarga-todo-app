@@ -31,9 +31,8 @@ class Model():
     def add_new_task(self, list_argv, file_to_use):
         self.file_to_use = file_to_use
         self.list_argv = list_argv
-        self.self.file_to_use.append(self.list_argv[1])
-        view.print_list(self.self.file_to_use)
-        #visszaírni file-ba az új listát
+        self.write_to_file(self.list_argv[1] + '\n')
+
 
     def file_opener(self, thefile):
         self.thefile = thefile
@@ -42,10 +41,20 @@ class Model():
         list_file = []
         for lines in self.content_read:
             list_file.append(lines)
+        self.content.close()
         return list_file
 
-    def write_to_file(self):
-        pass
+
+    def write_to_file(self, newcontent):
+        self.newcontent = newcontent
+        #self.file_to_write = file_to_write
+        self.file_to_write=open("database.txt", 'a')
+        for task in self.newcontent:
+            self.file_to_write.write(task)
+        self.file_to_write.close()
+        self.final_content = open("database.txt", 'r')
+        self.line_read_final_content = self.final_content.readlines()
+        self.file_to_write.close()
 
     def remove_task(self, which):
         pass
@@ -57,13 +66,15 @@ class View():
 
     def print_list(self, content):
         self.content = content
+        self.newcontent = []
         if len(self.content) == 0:
             print("No todos today!")
         else:
             for i in range(0, len(self.content)):
-                result = ""
-                result += str(i+1) + " - " + self.content[i].__str__()
-                print(result)
+                self.result = ""
+                self.result += str(i+1) + " - " + self.content[i].__str__()
+                self.newcontent.append(self.result)
+                print(self.result)
 
 view = View()
 model = Model()
